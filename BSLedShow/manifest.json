@@ -3,11 +3,12 @@
   "id": "BSLedShow",
   "name": "BSLedShow",
   "author": "ByadminPresents",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Plugin for sending game lightshow data to LEDs controller, such as ESP32",
   "gameVersion": "1.29.1",
   "dependsOn": {
     "BSIPA": "^4.2.0",
-    "_Heck":  "^1.5.0"
+    "_Heck": "^1.5.0",
+    "BS_Utils": "^1.12.2"
   }
 }
