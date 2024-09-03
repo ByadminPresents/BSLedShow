@@ -1,0 +1,13 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "BSLedShow",
+  "name": "BSLedShow",
+  "author": "ByadminPresents",
+  "version": "0.0.1",
+  "description": "",
+  "gameVersion": "1.29.1",
+  "dependsOn": {
+    "BSIPA": "^4.2.0",
+    "_Heck":  "^1.5.0"
+  }
+}
