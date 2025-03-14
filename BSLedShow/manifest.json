@@ -5,10 +5,9 @@
   "author": "ByadminPresents",
   "version": "1.0.0",
   "description": "Plugin for sending game lightshow data to LEDs controller, such as ESP32",
-  "gameVersion": "1.29.1",
+  "gameVersion": "1.39.1",
   "dependsOn": {
     "BSIPA": "^4.2.0",
-    "_Heck": "^1.5.0",
-    "BS_Utils": "^1.12.2"
+    "Heck": "^1.7.0"
   }
 }

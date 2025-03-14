@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomJSONData;
 using CustomJSONData.CustomBeatmap;
-using static AlphabetScrollInfo;
 using BSLedShow.Utils;
 using BSLedShow.Lighting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;

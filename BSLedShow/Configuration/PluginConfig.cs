@@ -49,9 +49,9 @@ namespace BSLedShow.Configuration
             {
                 ledUpdateSpeed = 1;
             }
-            if (ledUpdateSpeed > 250)
+            if (ledUpdateSpeed > 450)
             {
-                ledUpdateSpeed = 250;
+                ledUpdateSpeed = 450;
             }
 
             try

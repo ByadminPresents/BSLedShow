@@ -63,7 +63,7 @@ namespace BSLedShow.Patch
     [HarmonyPatch(typeof(StandardLevelScenesTransitionSetupDataSO), nameof(StandardLevelScenesTransitionSetupDataSO.Init))]
     internal class NewLevelStarted
     {
-        private static void Postfix(IPreviewBeatmapLevel previewBeatmapLevel, ColorScheme overrideColorScheme, IDifficultyBeatmap difficultyBeatmap)
+        private static void Postfix(BeatmapLevel beatmapLevel, ColorScheme overrideColorScheme, BeatmapKey beatmapKey, EnvironmentsListModel environmentsListModel) //IPreviewBeatmapLevel
         {
             var pluginInstance = Plugin.Instance;
             
@@ -83,18 +83,19 @@ namespace BSLedShow.Patch
 
             pluginInstance.time = 0;
             pluginInstance.bpmTime = 0;
-            pluginInstance.baseBPM = previewBeatmapLevel.beatsPerMinute;
+            pluginInstance.baseBPM = beatmapLevel.beatsPerMinute;
             pluginInstance.boostColorsOffset = 0;
+            
+            EnvironmentName environmentName = beatmapLevel.GetEnvironmentName(beatmapKey.beatmapCharacteristic, beatmapKey.difficulty);
+            var targetEnvironmentInfo = environmentsListModel.GetEnvironmentInfoBySerializedName((string) environmentName);
 
-            var environmentInfo = BeatmapEnvironmentHelper.GetEnvironmentInfo(difficultyBeatmap);
-
-            pluginInstance.environmentName = environmentInfo.serializedName;
+            pluginInstance.environmentName = targetEnvironmentInfo.serializedName;
 
             ColorScheme colorScheme = overrideColorScheme;
 
             if (colorScheme == null)
             {
-                colorScheme = new ColorScheme(environmentInfo.colorScheme);
+                colorScheme = targetEnvironmentInfo.colorScheme.colorScheme;
             }
 
             pluginInstance.envColors = new float[6][] {

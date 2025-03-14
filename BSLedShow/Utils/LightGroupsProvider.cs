@@ -10,7 +10,7 @@ namespace BSLedShow.Utils
         public Dictionary<string, int[]> LedGroups { get; set; }
         public Dictionary<string, Dictionary<int, Dictionary<int, string[]>>> LightGroupsMatching { get; set; }
 
-        public void AppendByteArrayWithLedIndexes(string environmentName, int lightType, int lightId, ConcurrentDictionary<int, LightsProcessor.ExtractedEventData> allLightIdsEvents, byte[] RGBColor, ref byte[] byteArray, ref int bitPosition)
+        public void AppendByteArrayWithLedIndexes(string environmentName, int lightType, int lightId, ConcurrentDictionary<int, ExtractedEventData> allLightIdsEvents, byte[] RGBColor, ref byte[] byteArray, ref int bitPosition)
         {
             if (LedGroups == null || LightGroupsMatching == null)
             {
@@ -42,7 +42,7 @@ namespace BSLedShow.Utils
                         {
                             if (LedGroups.TryGetValue(name, out var indexes))
                             {
-                                TCPPacketSender.AppendByteArray(indexes[0], indexes[1], RGBColor, ref byteArray, ref bitPosition);
+                                UDPPacketSender.AppendByteArray(indexes[0], indexes[1], RGBColor, ref byteArray, ref bitPosition);
                             }
                         }
                     }
@@ -53,7 +53,7 @@ namespace BSLedShow.Utils
                     {
                         if (LedGroups.TryGetValue(name, out var indexes))
                         {
-                            TCPPacketSender.AppendByteArray(indexes[0], indexes[1], RGBColor, ref byteArray, ref bitPosition);
+                            UDPPacketSender.AppendByteArray(indexes[0], indexes[1], RGBColor, ref byteArray, ref bitPosition);
                         }
                     }
                 }
